@@ -1,0 +1,14 @@
+﻿namespace JobTracker.Domain;
+
+public class Interview
+{
+    public int Id { get; set; }
+    public int JobApplicationId { get; set; }
+    public InterviewType Type { get; set; }
+    public DateTime ScheduledAt { get; set; }
+    public InterviewMode IMode { get; set; }
+    public string InterviewerName { get; set; }
+    public JobApplication JobApplication { get; set; }
+
+
+}
