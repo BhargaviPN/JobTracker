@@ -13,14 +13,12 @@ public class AppDbContext : DbContext
     public DbSet<Company> Companies { get; set; }
     public DbSet<JobApplication> JobApplications { get; set; }
     public DbSet<Interview> Interviews { get; set; }
-    public DbSet<Reminder> Remainders { get; set; }
+    public DbSet<Reminder> Reminders { get; set; }
     public DbSet<StatusHistory> StatusHistories { get; set; }
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
         base.OnModelCreating(modelBuilder);
-        modelBuilder.Entity<JobApplication>()
-            .Property(x=> x.Salary)
-            .HasPrecision(18,2);
-       }
+        modelBuilder.ApplyConfigurationsFromAssembly(typeof(AppDbContext).Assembly);
+    }
 }

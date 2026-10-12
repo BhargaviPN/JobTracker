@@ -31,12 +31,13 @@ namespace JobTracker.Infrastructure.Migrations
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
                     b.Property<string>("Location")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasMaxLength(150)
+                        .HasColumnType("nvarchar(150)");
 
                     b.Property<string>("Name")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasMaxLength(150)
+                        .HasColumnType("nvarchar(150)");
 
                     b.HasKey("Id");
 
@@ -53,7 +54,8 @@ namespace JobTracker.Infrastructure.Migrations
 
                     b.Property<string>("InterviewerName")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasMaxLength(150)
+                        .HasColumnType("nvarchar(150)");
 
                     b.Property<int>("JobApplicationId")
                         .HasColumnType("int");
@@ -96,7 +98,6 @@ namespace JobTracker.Infrastructure.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Location")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<DateTime>("PostedDate")
@@ -132,7 +133,8 @@ namespace JobTracker.Infrastructure.Migrations
 
                     b.Property<string>("Note")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasMaxLength(500)
+                        .HasColumnType("nvarchar(500)");
 
                     b.Property<DateTime>("ReminderDate")
                         .HasColumnType("datetime2");
@@ -141,7 +143,7 @@ namespace JobTracker.Infrastructure.Migrations
 
                     b.HasIndex("JobApplicationId");
 
-                    b.ToTable("Remainders");
+                    b.ToTable("Reminders");
                 });
 
             modelBuilder.Entity("JobTracker.Domain.StatusHistory", b =>
@@ -163,7 +165,7 @@ namespace JobTracker.Infrastructure.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("JobApplicationId");
+                    b.HasIndex("JobApplicationId", "ChangedAt");
 
                     b.ToTable("StatusHistories");
                 });

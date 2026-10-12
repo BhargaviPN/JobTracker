@@ -7,8 +7,8 @@ public class Interview
     public InterviewType Type { get; set; }
     public DateTime ScheduledAt { get; set; }
     public InterviewMode Mode { get; set; }
-    public string InterviewerName { get; set; }
-    public JobApplication JobApplication { get; set; }
+    public string InterviewerName { get; set; } = string.Empty;
+    public required JobApplication JobApplication { get; set; }
 
 
 }
